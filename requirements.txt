@@ -1,0 +1,4 @@
+# Optional - only if scripts/build_wheel.py or your own code depends on Python packages
+numpy
+pybind11
+# Add more if your research code depends on it
