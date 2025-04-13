@@ -32,6 +32,9 @@ jobs:
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
 
+      - name: Prune Docker system to free up space
+        run: docker system prune -af
+
       - name: Build Docker image
         run: |
           docker build -t ${{ secrets.ECR_REPO_URI }}:dev-latest .
