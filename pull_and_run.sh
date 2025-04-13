@@ -2,10 +2,9 @@
 set -e
 
 # Environment variables; update as needed
-ECR_REPO_URI="${ECR_REPO_URI:-123456789012.dkr.ecr.us-west-2.amazonaws.com/trtllm-dev}"
-IMAGE_TAG="${IMAGE_TAG:-dev-latest}"
-AWS_REGION="${AWS_REGION:-us-west-2}"
+source "$(dirname "$0")/.env"
 
+: "${IMAGE_TAG:=latest}"
 # Authenticate to ECR
 echo "Authenticating to ECR..."
 aws ecr get-login-password --region "$AWS_REGION" | docker login --username AWS --password-stdin "$ECR_REPO_URI"

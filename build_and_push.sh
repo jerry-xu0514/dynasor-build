@@ -1,10 +1,15 @@
 #!/bin/bash
 set -e
 
-# Environment variables; update as needed
-ECR_REPO_URI="${ECR_REPO_URI:-123456789012.dkr.ecr.us-west-2.amazonaws.com/trtllm-dev}"
-IMAGE_TAG="${IMAGE_TAG:-dev-latest}"
-AWS_REGION="${AWS_REGION:-us-west-2}"
+# Source environment variables from the .env file
+source "$(dirname "$0")/.env"
+
+# Configure AWS CLI using credentials from the .env file
+aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID"
+aws configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY"
+aws configure set default.region "$AWS_REGION"
+
+: "${IMAGE_TAG:=latest}"
 
 # Authenticate to ECR
 echo "Authenticating to ECR..."
