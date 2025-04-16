@@ -39,6 +39,8 @@ docker run -d \
   --ipc=host \
   --ulimit memlock=-1 \
   --ulimit stack=67108864 \
+  -v /home/ubuntu/TensorRT-LLM:/code/tensorrt_llm \
+  -w /code/tensorrt_llm \
   --entrypoint /bin/bash \
   "$ECR_REPO_URI:$IMAGE_TAG" \
   -c "sleep infinity"
