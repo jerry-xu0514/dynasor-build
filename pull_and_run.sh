@@ -45,6 +45,7 @@ docker run -d \
   --ulimit memlock=-1 \
   --ulimit stack=67108864 \
   -v /home/ubuntu/TensorRT-LLM:/code/tensorrt_llm \
+  -v /home/ubuntu/dynasor-demo:/dynasor-demo \
   -w /code/tensorrt_llm \
   --entrypoint /bin/bash \
   "$ECR_REPO_URI:$IMAGE_TAG" \
